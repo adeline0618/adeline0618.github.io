@@ -2,6 +2,11 @@
 layout: archive
 ---
 
+<div class="notice--success">
+  혹시나 잘못된 개념 전달이 있다면 댓글 부탁드립니다. 저의 성장에 큰 도움이
+  됩니다
+</div>
+
 {{ content }}
 
 <ul class="taxonomy__index">
@@ -25,10 +30,6 @@ group_by_exp: 'post', 'post.date | date: "%Y"' %} {% for year in postsByYear %}
   <div class="entries-{{ entries_layout }}">
     {% for post in year.items %} {% include archive-single.html
     type=entries_layout %} {% endfor %}
-    <div class="notice--success">
-      혹시나 잘못된 개념 전달이 있다면 댓글 부탁드립니다. 저의 성장에 큰 도움이
-      됩니다
-    </div>
   </div>
   <a href="#page-title" class="back-to-top"
     >{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }}
