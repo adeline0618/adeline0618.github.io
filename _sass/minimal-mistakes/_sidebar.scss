@@ -8,36 +8,28 @@
 
 .sidebar {
   @include clearfix();
-  // @include breakpoint(max-width $large) {
-  //   /* fix z-index order of follow links */
-  //   position: relative;
-  //   z-index: 10;
-  //   -webkit-transform: translate3d(0, 0, 0);
-  //   transform: translate3d(0, 0, 0);
-  // }
 
   @include breakpoint($large) {
-    float: left;
-    width: calc(#{$right-sidebar-width-narrow} - 1em);
+    width: $sidebar-width;
     opacity: 0.75;
     -webkit-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
-
+    max-height: calc(100vh - #{$nav-height} - 2em);
     &:hover {
       opacity: 1;
     }
 
     &.sticky {
+      max-height: 400px;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 2em;
       overflow-y: auto;
-      /* calculate height of nav list
-         viewport height - nav height - masthead x-padding
-      */
-      max-height: calc(100vh - #{$nav-height} - 2em);
     }
   }
 
   @include breakpoint($x-large) {
-    width: calc(#{$right-sidebar-width} - 1em);
+    width: $sidebar-width;
   }
 
   > * {
@@ -72,15 +64,15 @@
 }
 
 .sidebar__right {
-  margin-bottom: 1em;
-
+  // margin-bottom: 1em;
+  // margin-top: 1em;
+  height: 350px;
   @include breakpoint($large) {
-    position: absolute;
+    position: sticky;
     top: 0;
     right: 0;
-    width: $right-sidebar-width-narrow;
-    margin-right: -1 * $right-sidebar-width-narrow;
-    padding-left: 1em;
+    width: $sidebar-width;
+    padding-right: 1em;
     z-index: 10;
 
     &.sticky {
@@ -88,9 +80,10 @@
       position: -webkit-sticky;
       position: sticky;
       top: 2em;
-      float: right;
 
       .toc {
+        margin-top: 1em;
+        margin-bottom: 1em;
         .toc__menu {
           overflow-y: auto;
           max-height: calc(100vh - 7em);
@@ -100,15 +93,13 @@
   }
 
   @include breakpoint($x-large) {
-    width: $right-sidebar-width;
-    margin-right: -1 * $right-sidebar-width;
+    width: $sidebar-width;
   }
 }
 
 .splash .sidebar__right {
   @include breakpoint($large) {
     position: relative;
-    float: right;
     margin-right: 0;
   }
 
@@ -147,7 +138,6 @@
   display: table-cell;
   vertical-align: top;
   padding-left: 20px;
-  // padding-right: 25px;
   line-height: 1;
 
   @include breakpoint($large) {
@@ -343,7 +333,9 @@
     z-index: initial;
 
     &.sticky {
-      float: none;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 2em;
     }
   }
 

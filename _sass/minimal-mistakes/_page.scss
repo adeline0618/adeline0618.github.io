@@ -2,24 +2,33 @@
    SINGLE PAGE/POST
    ========================================================================== */
 
+.initial-content,
+.search-content {
+}
 #main {
-  @include clearfix;
+  padding: 1em;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1em;
-  padding-right: 1em;
+  // position: relative;
   -webkit-animation: $intro-transition;
   animation: $intro-transition;
   max-width: 100%;
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
-
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
   @include breakpoint($x-large) {
     max-width: $max-width;
   }
 }
-
+#contents-single {
+  width: calc(100% - #{sideber-width});
+  padding-left: 1em;
+  padding-right: 1em;
+}
 body {
+  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,28 +36,21 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.initial-content,
-.search-content {
-  flex: 1 0 auto;
+  flex-direction: column;
 }
 
 .page {
   @include breakpoint($large) {
-    float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: $right-sidebar-width-narrow;
+    max-width: 100%;
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width});
-    padding-right: $right-sidebar-width;
+    max-width: 100%;
   }
 
   .page__inner-wrap {
-    float: left;
+    max-width: 100%;
+
     margin-top: 1em;
     margin-left: 0;
     margin-right: 0;
@@ -62,7 +64,8 @@ body {
       float: left;
       margin-left: 0;
       margin-right: 0;
-      width: 100%;
+      max-width: 100%;
+
       clear: both;
     }
   }
@@ -93,22 +96,27 @@ body {
     border-bottom: 1px solid $border-color;
   }
 
-	h1, h2, h3, h4, h5, h6 {
-		.header-link {
-			position: relative;
-			left: 0.5em;
-			opacity: 0;
-			font-size: 0.8em;
-			-webkit-transition: opacity 0.2s ease-in-out 0.1s;
-			-moz-transition: opacity 0.2s ease-in-out 0.1s;
-			-o-transition: opacity 0.2s ease-in-out 0.1s;
-			transition: opacity 0.2s ease-in-out 0.1s;
-		}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    .header-link {
+      position: relative;
+      left: 0.5em;
+      opacity: 0;
+      font-size: 0.8em;
+      -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+      -moz-transition: opacity 0.2s ease-in-out 0.1s;
+      -o-transition: opacity 0.2s ease-in-out 0.1s;
+      transition: opacity 0.2s ease-in-out 0.1s;
+    }
 
-		&:hover .header-link {
-			opacity: 1;
-		}
-	}
+    &:hover .header-link {
+      opacity: 1;
+    }
+  }
 
   p,
   li,
@@ -146,11 +154,11 @@ body {
     background: $code-background-color;
     border-radius: $border-radius;
 
-    &::before,
-    &::after {
-      letter-spacing: -0.2em;
-      content: "\00a0"; /* non-breaking space*/
-    }
+    // &::before,
+    // &::after {
+    //   letter-spacing: -0.2em;
+    //   content: "\00a0"; /* non-breaking space*/
+    // }
   }
 
   dt {
@@ -532,11 +540,11 @@ body {
 
   @include breakpoint($large) {
     float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow});
+    width: calc(100% - #{$sidebar-width-narrow});
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width});
+    width: calc(100% - #{$sidebar-width});
   }
 
   a {
